@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { useDispatch } from "react-redux";
+import { Mobile } from "../response";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import { toggleSidebar } from "../redux/sideRedux";
 const Container = styled.div`
-  height: 50px;
+  height: 8vh;
   display: flex;
   align-items: center;
-  background-color: lightgray;
+  background-color: #f8f9fa;
 `;
 
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-left: 30px;
-  margin-right: 30px;
+  margin-left: 26px;
+  margin-right: 26px;
+  ${Mobile({ marginLeft: "16px" })}
 `;
 const Left = styled.div`
   display: flex;
@@ -30,7 +35,9 @@ const Right = styled.div`
 
 const Title = styled.h1`
   font-size: 25px;
-  margin: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
 `;
 
 const AccountContainer = styled.div`
@@ -38,8 +45,8 @@ const AccountContainer = styled.div`
   width: 150px;
   border-radius: 5px;
   position: absolute;
-  background-color: lightgray;
-  top: 55px;
+  background-color: #f8f9fa;
+  top: 9vh;
   right: 30px;
   display: flex;
   align-items: center;
@@ -61,6 +68,7 @@ const Middle = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  flex-direction: column;
 `;
 const Bottom = styled.div`
   width: 100%;
@@ -70,20 +78,31 @@ const Bottom = styled.div`
   justify-content: center;
 `;
 const Name = styled.span`
-  font-size: 24px;
+  font-size: 18px;
 `;
+const Username = styled.span`
+  font-size: 12px;
+`;
+
 const LogoutText = styled.span`
   font-size: 18px;
   margin-right: 10px;
 `;
+
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
+
   const IconStyle = { height: "35px", width: "35px", cursor: "pointer" };
-  console.log(clicked);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(toggleSidebar());
+  };
   return (
     <Container>
       <Wrapper>
         <Left>
+          <MenuRoundedIcon style={IconStyle} onClick={handleClick} />
           <Title>Admin</Title>
         </Left>
 
@@ -107,6 +126,7 @@ const Navbar = () => {
             </Top>
             <Middle>
               <Name>UserName</Name>
+              <Username>user@mail.com</Username>
             </Middle>
             <Bottom>
               <LogoutText>Logout</LogoutText>
