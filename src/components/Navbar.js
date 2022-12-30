@@ -7,9 +7,13 @@ import { Mobile } from "../response";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { toggleSidebar } from "../redux/sideRedux";
 const Container = styled.div`
-  height: 8vh;
+  height: 60px;
   display: flex;
   align-items: center;
+  position: fixed;
+  width: 100%;
+
+  z-index: 3;
   background-color: #f8f9fa;
 `;
 
@@ -17,9 +21,9 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
-  margin-left: 26px;
+  margin-left: 43px;
   margin-right: 26px;
-  ${Mobile({ marginLeft: "16px" })}
+  ${Mobile({ marginLeft: "39px", marginRight: "26px" })}
 `;
 const Left = styled.div`
   display: flex;
@@ -37,7 +41,8 @@ const Title = styled.h1`
   font-size: 25px;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 10px;
+  margin-left: 30px;
+  ${Mobile({ marginLeft: "10px" })}
 `;
 
 const AccountContainer = styled.div`
@@ -46,7 +51,7 @@ const AccountContainer = styled.div`
   border-radius: 5px;
   position: absolute;
   background-color: #f8f9fa;
-  top: 9vh;
+  top: 70px;
   right: 30px;
   display: flex;
   align-items: center;
