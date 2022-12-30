@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
 import Styled from "styled-components";
 import { useSelector } from "react-redux";
+
 // import { Mobile } from "../res";
 import FeaturedInfo from "../components/FeaturedInfo";
 import Charts from "../components/Charts";

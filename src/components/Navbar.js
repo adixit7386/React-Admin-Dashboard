@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import PersonIcon from "@mui/icons-material/Person";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { useDispatch } from "react-redux";
 import { Mobile } from "../response";
@@ -112,7 +112,7 @@ const Navbar = () => {
         </Left>
 
         <Right>
-          <PersonOutlinedIcon
+          <PersonIcon
             onClick={() => {
               setClicked((data) => !data);
             }}
@@ -122,7 +122,7 @@ const Navbar = () => {
         {clicked && (
           <AccountContainer>
             <Top>
-              <PersonOutlinedIcon
+              <PersonIcon
                 onClick={() => {
                   setClicked((data) => !data);
                 }}

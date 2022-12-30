@@ -9,8 +9,6 @@ const Wrapper = Styled.div`
 display:flex;
 `;
 
-const Sidebar = Styled.div`
-flex:1;`;
 const Content = Styled.div`
 flex:4;
 `;
@@ -19,12 +17,8 @@ const Analytics = () => {
   return (
     <Container>
       <Navbar />
+      {toggle && <Sidebars />}
       <Wrapper>
-        {toggle && (
-          <Sidebar>
-            <Sidebars />
-          </Sidebar>
-        )}
         <Content>content</Content>
       </Wrapper>
     </Container>
