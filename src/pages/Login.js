@@ -31,6 +31,9 @@ const LoginText = Styled.span`
 `;
 
 const InputContainer = Styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
 padding:10px 5px;
 height:30px;
 background-color:white;
@@ -45,14 +48,14 @@ width:100%;
 
 `;
 const Input = Styled.input`
-padding:5px;
+
 font-size:18px;
 width:90%;
 height:90%;
 border:none;
 &:focus{
-    padding:5px;
-    width:100%;
+    
+    
     width:90%;
 height:90%;
     border:none;

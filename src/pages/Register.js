@@ -40,6 +40,9 @@ flex-wrap:wrap;
 ${Mobile({ flexWrap: "" })}
 `;
 const InputContainer = Styled.div`
+display:flex;
+align-items:center;
+justify-content:center;
 padding:10px 5px;
 height:30px;
 background-color:white;
@@ -57,9 +60,12 @@ font-size:18px;
 width:90%;
 height:90%;
 border:none;
+
+outline:none;
+transition:all 0.3s ease;
 &:focus{
-    padding:5px;
-    width:100%;
+    
+    
     border:none;
     outline:none;
     font-size:18px;

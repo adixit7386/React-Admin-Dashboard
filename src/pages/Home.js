@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
-import { Mobile } from "../response";
 import Styled from "styled-components";
 import { useSelector } from "react-redux";
 const Container = Styled.div``;
