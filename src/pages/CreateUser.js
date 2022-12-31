@@ -2,8 +2,7 @@ import React from "react";
 import Styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
-import { useSelector } from "react-redux";
-
+import { Mobile } from "../response";
 import UploadIcon from "@mui/icons-material/Upload";
 const Container = Styled.div``;
 
@@ -13,6 +12,7 @@ width:100%;
 `;
 
 const Content = Styled.div`
+
 flex:4;
 display:flex;
 margin-top:70px;
@@ -45,9 +45,14 @@ padding:27px 32px;
 box-shadow:0px 0px 10px lightgray;
 display:flex;
 align-items:top;
-justify-content:center;`;
+justify-content:center;
+${Mobile({ flexDirection: "column" })};
+`;
 const FormContainer = Styled.div`
-flex:1;`;
+flex:1;
+padding:10px 30px;
+
+`;
 const ImageContainer = Styled.div`
 display:flex;
 align-items:top;
@@ -58,7 +63,7 @@ const Input = Styled.input`
 border:none;
 border-bottom:solid 2px lightgray;
 height:40px;
-width:80%;
+width:100%;
 
 
 &:focus{
@@ -92,13 +97,12 @@ cursor:pointer;
   background-color:#2C74B3;
 }`;
 const CreateUsers = () => {
-  const toggle = useSelector((state) => state.sidebar);
-
   const IconUpload = { height: "25px", width: "25px" };
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      {/* {toggle && <Sidebars />} */}
+      <Sidebars />
       <Wrapper>
         <Content>
           <Header>Create New User</Header>
@@ -143,7 +147,7 @@ const CreateUsers = () => {
                   <UploadIcon style={IconUpload} />
                 </ProfileImageContainer>
                 <ProfileImageContainer>
-                  <Button>Create New User</Button>
+                  <Button>Create</Button>
                 </ProfileImageContainer>
               </ImageContainer>
             </EditContainer>

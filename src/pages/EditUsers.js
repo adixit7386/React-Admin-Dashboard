@@ -2,13 +2,13 @@ import React from "react";
 import Styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
-import { useSelector } from "react-redux";
 import PersonIcon from "@mui/icons-material/Person";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import UploadIcon from "@mui/icons-material/Upload";
+import { Mobile } from "../response";
 const Container = Styled.div``;
 
 const Wrapper = Styled.div`
@@ -32,6 +32,7 @@ border-radius:5px;
 box-shadow:0px 0px 10px lightgray;
 margin-right:10px;
 padding:5px 12px;
+${Mobile({ marginRight: "0px", marginBottom: "10px" })};
 `;
 const TableData = Styled.div`
 display:flex;
@@ -75,13 +76,15 @@ const DetailContainer = Styled.div`
 padding-left:12%;
 margin-top:20px;
 margin-bottom:20px;
+
 `;
 const Details = Styled.div`
 flex:1;
 width:100%;
 display:flex;
 align-items:top;
-justify-content:center;`;
+justify-content:center;
+${Mobile({ flexDirection: "column" })};`;
 const DataContainer = Styled.div`
 margin-top:20px;
 margin-bottom:20px;
@@ -98,9 +101,11 @@ padding:27px 32px;
 box-shadow:0px 0px 10px lightgray;
 display:flex;
 align-items:top;
-justify-content:center;`;
+justify-content:center;
+${Mobile({ flexDirection: "column" })};`;
 const FormContainer = Styled.div`
-flex:1;`;
+flex:1;
+padding: 10px 30px;`;
 const ImageContainer = Styled.div`
 display:flex;
 align-items:top;
@@ -111,7 +116,7 @@ const Input = Styled.input`
 border:none;
 border-bottom:solid 2px lightgray;
 height:40px;
-width:80%;
+width:100%;
 
 
 &:focus{
@@ -145,13 +150,12 @@ font-size:18px;
   background-color:#2C74B3;
 }`;
 const EditUsers = () => {
-  const toggle = useSelector((state) => state.sidebar);
   const IconStyle = { height: "25px", width: "25px", marginLeft: "12%" };
   const IconUpload = { height: "25px", width: "25px" };
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      <Sidebars />
       <Wrapper>
         <Content>
           <Header>Edit User Details</Header>

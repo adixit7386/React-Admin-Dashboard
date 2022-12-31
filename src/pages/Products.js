@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
 import Styled from "styled-components";
-import { useSelector } from "react-redux";
 import { Mobile } from "../response";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -97,7 +96,6 @@ const Products = () => {
   function handleClick() {
     navigate("/products/new");
   }
-  const toggle = useSelector((state) => state.sidebar);
   const EditStyle = {
     height: "25px",
     width: "25px",
@@ -206,7 +204,7 @@ const Products = () => {
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      <Sidebars />
       <Wrapper>
         <Content>
           <UsersContainer>

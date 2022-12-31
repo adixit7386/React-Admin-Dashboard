@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
 import Styled from "styled-components";
-import { useSelector } from "react-redux";
 import { Mobile } from "../response";
 import { useNavigate } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
@@ -35,7 +34,7 @@ box-shadow:0px 0px 10px lightgray;
 
 align-items:center;
 justify-content:center;
-${Mobile({ width: "90%" })}
+${Mobile({ width: "80%" })}
 `;
 const TableRow = Styled.tr`
 flex:1;
@@ -46,6 +45,7 @@ cursor:${(props) => props.name !== "header" && "pointer"};
 align-items:center;
 border-radius:5px;
 margin:5px;
+${Mobile({ flex: "0.8" })};
 
 box-shadow:0px 0px 2px lightgray;
 transition:all 0.5s ease;
@@ -97,7 +97,6 @@ const Users = () => {
   function handleClick() {
     navigate("/users/new");
   }
-  const toggle = useSelector((state) => state.sidebar);
   const EditStyle = {
     height: "25px",
     width: "25px",
@@ -118,8 +117,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "2",
@@ -127,8 +126,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "3",
@@ -136,8 +135,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "4",
@@ -145,8 +144,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "5",
@@ -154,8 +153,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "6",
@@ -163,8 +162,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "7",
@@ -172,8 +171,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "8",
@@ -181,8 +180,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "9",
@@ -190,8 +189,8 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
     {
       id: "10",
@@ -199,14 +198,15 @@ const Users = () => {
         "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png",
       name: "abc",
       email: "abc@xyz.com",
-      status: "active",
-      transaction: "120",
+
+      amount: "120",
     },
   ];
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+
+      <Sidebars />
       <Wrapper>
         <Content>
           <UsersContainer>
@@ -230,12 +230,9 @@ const Users = () => {
                 <TableData name="email">
                   <Heading>Email</Heading>
                 </TableData>
-                <TableData name="status">
-                  <Heading>Status</Heading>
-                </TableData>
 
-                <TableData name="transactions">
-                  <Heading>Transactions</Heading>
+                <TableData name="amounts">
+                  <Heading>amounts</Heading>
                 </TableData>
                 <TableData name="action">
                   <Heading>Action</Heading>
@@ -258,11 +255,9 @@ const Users = () => {
                   <TableData name="email">
                     <Data>{item.email}</Data>
                   </TableData>
-                  <TableData name="status">
-                    <Data>{item.status}</Data>
-                  </TableData>
-                  <TableData name="transactions">
-                    <Data>{item.transaction}</Data>
+
+                  <TableData name="amounts">
+                    <Data>{item.amount}</Data>
                   </TableData>
                   <TableData name="actions">
                     <EditIcon style={EditStyle} />

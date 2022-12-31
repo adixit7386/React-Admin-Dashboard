@@ -6,17 +6,20 @@ import PeopleIcon from "@mui/icons-material/People";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import InsightsIcon from "@mui/icons-material/Insights";
 import { toggleSidebar } from "../redux/sideRedux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { Mobile } from "../response";
 const Container = Styled.div`
 
 position:fixed;
 width:250px;
+top:0px;
+bottom:0px;
 z-index:3;
 height:100vh;
+margin-left:${(props) => (props.toggle !== true ? "-250px" : "0px")};;
 background-color:#f8f9fa;
-
+transition:all 0.3s ease-in-out;
 ${Mobile({ width: "200px" })}
 
 `;
@@ -113,8 +116,10 @@ flex-direction:column;`;
     navigate("/" + e);
   };
 
+  const toggle = useSelector((state) => state.sidebar);
+
   return (
-    <Container>
+    <Container toggle={toggle}>
       <ContentContainerMenu>
         <MenuRoundedIcon style={IconStyleMenu} onClick={handleClickSidebar} />
         <Title>Admin</Title>

@@ -2,9 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
 import Styled from "styled-components";
-import { useSelector } from "react-redux";
 
-// import { Mobile } from "../res";
 import FeaturedInfo from "../components/FeaturedInfo";
 import Charts from "../components/Charts";
 import Information from "../components/Information";
@@ -29,11 +27,10 @@ padding:20px;
 `;
 
 const Home = () => {
-  const toggle = useSelector((state) => state.sidebar);
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      <Sidebars />
 
       <Wrapper>
         <Content>

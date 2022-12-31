@@ -6,13 +6,14 @@ import { useDispatch } from "react-redux";
 import { Mobile } from "../response";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { toggleSidebar } from "../redux/sideRedux";
+import { useNavigate } from "react-router-dom";
 const Container = styled.div`
   height: 60px;
   display: flex;
   align-items: center;
   position: fixed;
   width: 100%;
-
+  top: 0px;
   z-index: 3;
   background-color: #f8f9fa;
 `;
@@ -80,7 +81,14 @@ const Bottom = styled.div`
   height: 38%;
   align-items: center;
   display: flex;
+  cursor: pointer;
+
   justify-content: center;
+  margin: 5px;
+  border-radius: 5px;
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 const Name = styled.span`
   font-size: 18px;
@@ -96,10 +104,16 @@ const LogoutText = styled.span`
 
 const Navbar = () => {
   const [clicked, setClicked] = useState(false);
-
+  const navigate = useNavigate();
   const IconStyle = { height: "35px", width: "35px", cursor: "pointer" };
   const dispatch = useDispatch();
-
+  const handleClickNavigate = (props) => {
+    if (props === "logout") {
+      navigate("/login");
+    } else {
+      navigate("/home");
+    }
+  };
   const handleClick = () => {
     dispatch(toggleSidebar());
   };
@@ -108,7 +122,7 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <MenuRoundedIcon style={IconStyle} onClick={handleClick} />
-          <Title>Admin</Title>
+          <Title onClick={() => handleClickNavigate("home")}>Admin</Title>
         </Left>
 
         <Right>
@@ -133,7 +147,7 @@ const Navbar = () => {
               <Name>UserName</Name>
               <Username>user@mail.com</Username>
             </Middle>
-            <Bottom>
+            <Bottom onClick={() => handleClickNavigate("logout")}>
               <LogoutText>Logout</LogoutText>
               <LogoutOutlinedIcon style={IconStyle} />
             </Bottom>

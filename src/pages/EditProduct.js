@@ -2,8 +2,7 @@ import React from "react";
 import Styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
-import { useSelector } from "react-redux";
-
+import { Mobile } from "../response";
 import UploadIcon from "@mui/icons-material/Upload";
 const Container = Styled.div``;
 
@@ -20,6 +19,7 @@ align-items:center;
 justify-content:center;
 padding:5px 12px;
 flex-direction:column;
+
 `;
 
 const UserContainer = Styled.div`
@@ -28,6 +28,7 @@ border-radius:5px;
 box-shadow:0px 0px 10px lightgray;
 margin-right:10px;
 padding:5px 12px;
+${Mobile({ marginRight: "0px", marginBottom: "20px" })};
 `;
 const TableData = Styled.div`
 display:flex;
@@ -41,7 +42,8 @@ align-items:left;
 justify-content:between;
 flex-direction:column;
 margin-top:20px;
-margin-bottom:20px;`;
+margin-bottom:20px;
+`;
 const ImgContainer = Styled.div`
 flex:1;
 display:flex;
@@ -77,7 +79,8 @@ flex:1;
 width:100%;
 display:flex;
 align-items:top;
-justify-content:center;`;
+justify-content:center;
+${Mobile({ flexDirection: "column" })};`;
 
 const Header = Styled.h1`
 flex:1;
@@ -89,9 +92,11 @@ padding:27px 32px;
 box-shadow:0px 0px 10px lightgray;
 display:flex;
 align-items:top;
-justify-content:center;`;
+justify-content:center;
+${Mobile({ flexDirection: "column" })};`;
 const FormContainer = Styled.div`
-flex:1;`;
+flex:1;
+padding :10px 30px;`;
 const ImageContainer = Styled.div`
 display:flex;
 align-items:top;
@@ -102,7 +107,7 @@ const Input = Styled.input`
 border:none;
 border-bottom:solid 2px lightgray;
 height:40px;
-width:80%;
+width:100%;
 
 
 &:focus{
@@ -136,13 +141,11 @@ font-size:18px;
   background-color:#2C74B3;
 }`;
 const EditProduct = () => {
-  const toggle = useSelector((state) => state.sidebar);
-
   const IconUpload = { height: "25px", width: "25px" };
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      <Sidebars />
       <Wrapper>
         <Content>
           <Header>Edit Product Details</Header>
