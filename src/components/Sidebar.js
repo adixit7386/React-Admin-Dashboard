@@ -26,8 +26,6 @@ ${Mobile({ width: "200px" })}
 // ${Mobile({ flex: "0.2" })}
 
 const Wrapper = Styled.div`
-
-
 height:content-fit;
 display:flex;
 align-items:center;
@@ -116,7 +114,7 @@ flex-direction:column;`;
     navigate("/" + e);
   };
 
-  const toggle = useSelector((state) => state.sidebar);
+  const toggle = useSelector((state) => state.side.sidebar);
 
   return (
     <Container toggle={toggle}>

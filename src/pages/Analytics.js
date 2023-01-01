@@ -2,24 +2,35 @@ import React from "react";
 import Styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Sidebars from "../components/Sidebar";
-import { useSelector } from "react-redux";
+import FeaturedInfo from "../components/FeaturedInfo";
+import Charts from "../components/Charts";
 const Container = Styled.div``;
 
 const Wrapper = Styled.div`
 display:flex;
+
 `;
 
 const Content = Styled.div`
 flex:4;
+flex:4;
+margin-top:60px;
+display:flex;
+align-items:center;
+justify-content:top;
+flex-direction:column;
+padding:20px;
 `;
 const Analytics = () => {
-  const toggle = useSelector((state) => state.sidebar);
   return (
     <Container>
       <Navbar />
-      {toggle && <Sidebars />}
+      <Sidebars />
       <Wrapper>
-        <Content>content</Content>
+        <Content>
+          <FeaturedInfo />
+          <Charts />
+        </Content>
       </Wrapper>
     </Container>
   );

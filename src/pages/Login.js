@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/userRedux";
+
 const Container = Styled.div`
 height:100vh;
 background-color:#f8f9fa;
@@ -10,7 +13,6 @@ justify-content:center;
 `;
 
 const Wrapper = Styled.div`
-
 display:flex;
 align-items:center;
 justify-content:center;
@@ -19,15 +21,14 @@ width:300px;
 
 `;
 const Title = Styled.h1`
-  font-size:45px;
-  margin-bottom:10px;
+font-size:45px;
+margin-bottom:10px;
 `;
 
 const LoginText = Styled.span`
-  font-size: 25px;
-  
-  margin-bottom:20px;
-  margin-top:10px;
+font-size: 25px;
+margin-bottom:20px;
+margin-top:10px;
 `;
 
 const InputContainer = Styled.div`
@@ -43,25 +44,19 @@ border-top-left-radius:${(props) => props.name === "username" && "5px"};
 border-top-right-radius:${(props) => props.name === "username" && "5px"};
 border-bottom-right-radius:${(props) => props.name === "password" && "5px"};
 border-bottom-left-radius:${(props) => props.name === "password" && "5px"};
-
 width:100%;
-
 `;
 const Input = Styled.input`
-
 font-size:18px;
 width:90%;
 height:90%;
 border:none;
 &:focus{
-    
-    
-    width:90%;
+width:90%;
 height:90%;
-    border:none;
-    outline:none;
+border:none;
+outline:none;
 }
-
 `;
 const CheckboxContainer = Styled.div`
 width:100%;
@@ -91,16 +86,36 @@ cursor:pointer;
 
 const Warning = Styled.span``;
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  console.log(username, password);
+  const handleClick = () => {
+    dispatch(login());
+    navigate("/home");
+  };
   return (
     <Container>
       <Wrapper>
         <Title>Admin</Title>
         <LoginText>Please Login</LoginText>
         <InputContainer name="username">
-          <Input placeholder="Username" />
+          <Input
+            placeholder="Username"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
         </InputContainer>
         <InputContainer name="password">
-          <Input type="password" placeholder="Password" />
+          <Input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </InputContainer>
         <CheckboxContainer>
           <Input
@@ -109,7 +124,9 @@ const Login = () => {
           ></Input>
           <label>Remember Me</label>
         </CheckboxContainer>
-        <Button type="submit">Login</Button>
+        <Button type="submit" onClick={handleClick}>
+          Login
+        </Button>
         <CheckboxContainer>
           <Warning>
             Don't have an account?{" "}

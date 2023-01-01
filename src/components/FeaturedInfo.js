@@ -20,6 +20,10 @@ padding:10px;
 
 border-radius:5px;
 box-shadow: 0px 0px 10px lightgray;
+transition:box-shadow 0.5s ease;
+&:hover{
+  box-shadow: 0px 0px 20px lightgray;
+}
 ${Mobile({ margin: "10px 20px", width: "100%" })};
 `;
 

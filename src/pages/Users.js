@@ -30,7 +30,7 @@ font-size:24px;`;
 const TableContainer = Styled.table`
 width:100%;
 border-radius:5px;
-box-shadow:0px 0px 10px lightgray;
+
 
 align-items:center;
 justify-content:center;
@@ -202,6 +202,10 @@ const Users = () => {
       amount: "120",
     },
   ];
+
+  const handleClickEdit = () => {
+    navigate("/users/123");
+  };
   return (
     <Container>
       <Navbar />
@@ -240,7 +244,7 @@ const Users = () => {
               </TableRow>
 
               {data.map((item) => (
-                <TableRow>
+                <TableRow onClick={handleClickEdit}>
                   <TableData name="id">
                     <Username>{item.id}</Username>
                   </TableData>
@@ -260,7 +264,7 @@ const Users = () => {
                     <Data>{item.amount}</Data>
                   </TableData>
                   <TableData name="actions">
-                    <EditIcon style={EditStyle} />
+                    <EditIcon style={EditStyle} onClick={handleClickEdit} />
                     <DeleteIcon style={DeleteStyle} />
                   </TableData>
                 </TableRow>

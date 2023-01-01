@@ -1,7 +1,8 @@
 import React from "react";
 import Styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Mobile } from "../response";
+
 const Container = Styled.div`
 height:100vh;
 background-color:#f8f9fa;
@@ -99,11 +100,16 @@ font-size:20px;
 color:white;
 &:hover{
     background-color:#0d6ee5;
-}`;
+};
+cursor:Pointer;`;
 
 const Warning = Styled.span``;
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/login");
+  };
   return (
     <Container>
       <Wrapper>
@@ -129,7 +135,9 @@ const Login = () => {
             <Input type="password" placeholder="Repeat Password" />
           </InputContainer>
         </InputWrapper>
-        <Button type="submit">Register</Button>
+        <Button type="submit" onClick={handleClick}>
+          Register
+        </Button>
         <CheckboxContainer>
           <Warning>
             already have an account?{" "}

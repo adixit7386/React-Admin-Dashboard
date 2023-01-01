@@ -22,6 +22,10 @@ flex-direction:column;
 border-radius:5px;
 box-shadow:0px 0px 10px lightgray;
 margin-right:10px;
+transition:box-shadow 0.5s ease;
+&:hover{
+  box-shadow: 0px 0px 20px lightgray;
+}
 ${Mobile({ flex: "2", margin: "10px auto" })}
 `;
 const TransactionsContainer = Styled.div`
@@ -33,6 +37,10 @@ flex-direction:column;
 border-radius:5px;
 height:content-fit;
 box-shadow:0px 0px 10px lightgray;
+transition:box-shadow 0.5s ease;
+&:hover{
+  box-shadow: 0px 0px 20px lightgray;
+}
 `;
 const Header = Styled.h1`
 font-size:24px;`;

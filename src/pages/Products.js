@@ -30,7 +30,7 @@ font-size:24px;`;
 const TableContainer = Styled.table`
 width:100%;
 border-radius:5px;
-box-shadow:0px 0px 10px lightgray;
+
 
 align-items:center;
 justify-content:center;
@@ -96,6 +96,9 @@ const Products = () => {
   function handleClick() {
     navigate("/products/new");
   }
+  const handleClickEdit = () => {
+    navigate("/products/123");
+  };
   const EditStyle = {
     height: "25px",
     width: "25px",
@@ -241,7 +244,7 @@ const Products = () => {
               </TableRow>
 
               {data.map((item) => (
-                <TableRow>
+                <TableRow onClick={handleClickEdit}>
                   <TableData name="id">
                     <Username>{item.id}</Username>
                   </TableData>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Mobile } from "../response";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import { toggleSidebar } from "../redux/sideRedux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { logout } from "../redux/userRedux";
 const Container = styled.div`
   height: 60px;
   display: flex;
@@ -101,14 +102,20 @@ const LogoutText = styled.span`
   font-size: 18px;
   margin-right: 10px;
 `;
-
+const Span = styled.span`
+  margin-right: 30px;
+  font-weight: bold;
+  cursor: pointer;
+`;
 const Navbar = () => {
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const [clicked, setClicked] = useState(false);
   const navigate = useNavigate();
   const IconStyle = { height: "35px", width: "35px", cursor: "pointer" };
   const dispatch = useDispatch();
   const handleClickNavigate = (props) => {
     if (props === "logout") {
+      dispatch(logout());
       navigate("/login");
     } else {
       navigate("/home");
@@ -126,12 +133,23 @@ const Navbar = () => {
         </Left>
 
         <Right>
-          <PersonIcon
-            onClick={() => {
-              setClicked((data) => !data);
-            }}
-            style={IconStyle}
-          />
+          {isLoggedIn ? (
+            <PersonIcon
+              onClick={() => {
+                setClicked((data) => !data);
+              }}
+              style={IconStyle}
+            />
+          ) : (
+            <>
+              <Link style={{ all: "unset" }} to="/login">
+                <Span>Login</Span>
+              </Link>
+              <Link style={{ all: "unset" }} to="/register">
+                <Span>Register</Span>
+              </Link>
+            </>
+          )}
         </Right>
         {clicked && (
           <AccountContainer>
